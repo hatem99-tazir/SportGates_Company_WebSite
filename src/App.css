@@ -254,7 +254,7 @@ input,
   background-color: blue;
 }
 .bg-black {
-  background-color: black;
+  background-color: #343131;
 }
 
 .bg-black2 {
@@ -721,7 +721,7 @@ header {
 }
 
 .logo-img {
-  width: 200px;
+  width: 30px;
 }
 .logo p {
   margin: 0;
@@ -947,7 +947,6 @@ nav ul li p {
 .fit-content-hr {
   width: 100%;
   height: 2px;
-  background-color: #c7253e;
 }
 
 .full-width-hr {
