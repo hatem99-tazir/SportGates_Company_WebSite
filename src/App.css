@@ -1189,7 +1189,7 @@ nav ul li p {
 }
 
 .footer-top-left > h1 {
-    font-size: 38px;
+    font-size: 50px;
 }
 
 
@@ -1229,7 +1229,7 @@ nav ul li p {
     color: #ff6600 !important;
 }
 .footer-bottom :last-child ul li:hover {
-    color: transparent !important;
+    color: black !important;
 }
 
 

@@ -24,6 +24,7 @@ import youtube from "./assets/socials/media.png";
 
 import React, {useState} from "react";
 import {motion, AnimatePresence} from "framer-motion";
+import Products from "./products";
 
 function openLinkInNewWindow(url) {
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -607,6 +608,7 @@ const Footer = () => {
                 </div>
             </div>
         </motion.div>
+
     )
 }
 
