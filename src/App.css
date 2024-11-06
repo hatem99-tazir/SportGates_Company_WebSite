@@ -1229,7 +1229,7 @@ nav ul li p {
     color: #ff6600 !important;
 }
 .footer-bottom :last-child ul li:hover {
-    color: black !important;
+    color: transparent !important;
 }
 
 

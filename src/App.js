@@ -6,6 +6,11 @@ import logo from "./assets/logo.png";
 import back1 from "./assets/back1.png";
 import img2 from "./assets/img2.png";
 import sportLogo from "./assets/sportLogo.png";
+import arrowDown from "./assets/arrowDown.png";
+import prod1 from "./assets/prod2.png";
+import prod2 from "./assets/prod3.png";
+import prod3 from "./assets/prod4.png";
+import prod4 from "./assets/prod5.png";
 import message from "./assets/telegram.png";
 import call from "./assets/call.png";
 import email from "./assets/email.png";
@@ -17,7 +22,12 @@ import instagram from "./assets/socials/instagram.png";
 import x from "./assets/socials/twitter.png";
 import youtube from "./assets/socials/media.png";
 
+import React, {useState} from "react";
 import {motion, AnimatePresence} from "framer-motion";
+
+function openLinkInNewWindow(url) {
+    window.open(url, '_blank', 'noopener,noreferrer');
+}
 
 function App() {
     return (
@@ -26,6 +36,8 @@ function App() {
             <Home/>
             <Section2/>
             <Section3/>
+            <Section4/>
+            <Section5/>
             <Footer/>
         </div>
     );
@@ -33,7 +45,7 @@ function App() {
 
 const Home = () => {
     return (
-        <div className="section home px-80 box-sizing">
+        <div id="home" className="section home px-80 box-sizing">
             <div
                 className="w-full relative h-full border-radius-5 bg-grey box-sizing flex justify-space-between  px-80 ">
                 <motion.div className="home-left flex-column justify-center relative">
@@ -114,7 +126,10 @@ const Home = () => {
 
 const Section2 = () => {
     return (
-        <div className="section section2 w-full h-full flex justify-space-between px-80 box-sizing">
+        <div
+            id="section2"
+            className="section section2 w-full h-full flex justify-space-between px-80 box-sizing"
+        >
             <div
                 className="flex relative align-items-center justify-center section2-left  h-full  border-radius-5 bg-grey">
                 <img alt=" " src={img2}/>
@@ -123,25 +138,25 @@ const Section2 = () => {
                 <p className="sec-text bold ">
                     Company Name Is Now Open And Only For It Cause.
                 </p>
-                <p className="">
-                    Company Name Is Now Open And Only For It Cause.Company Name Is Now
+                <p className="small-text">
+                    Company Name Is Now And Only For It Cause.Company Name Is Now
                     Open And Only For It Cause, Company Name Is Now Open And Only For It
-                    Cause, Company Name Is Now Open And Only For It Cause.
+                    Cause, Co.
                 </p>
                 <div className="my-20">
                     <p className="bold">Company Policy</p>
-                    <p className="">
+                    <p className="small-text">
                         Company Name Is Now Open And Only For It Cause.Company Name Is Now
                         Open And Only For It Cause, Company Name Is Now Open And Only For It
-                        Cause, Company Name Is Now Open And Only For It Cause.
+                        Cause, Company Name Is Now It Cause.
                     </p>
                 </div>
 
                 <div className="">
                     <p className="bold">Company Policy</p>
-                    <p className="">
+                    <p className="small-text">
                         Company Name Is Now Open And Only For It Cause.Company Name Is Now
-                        Open And Only For It Cause, Company Name Is Now Open And Only For It
+                        Open And Only For It Cause, Company Name Is Open And Only For It
                         Cause, Company Name Is Now Open And Only For It Cause.
                     </p>
                 </div>
@@ -156,7 +171,10 @@ const Section2 = () => {
 
 const Section3 = () => {
     return (
-        <div className="section section3  w-full h-full flex-column justify-space-between px-80 box-sizing ">
+        <div
+            id="section3"
+            className="section section3  w-full h-full flex-column justify-space-between px-80 box-sizing "
+        >
             <div className="">
                 <div className="section3-banner bg-black w-full flex justify-space-between border"></div>
             </div>
@@ -209,7 +227,175 @@ const Section3 = () => {
     );
 };
 
+const Section4 = () => {
+    const [openIndex, setOpenIndex] = useState(null);
+
+    const toggleOpen = (index) => {
+        setOpenIndex(openIndex === index ? null : index);
+    };
+
+    const faqs = [
+        {
+            question: "What is your return policy ?",
+            answer:
+                "Our return policy is 30 days. You can track your order through the tracking link sent to your email. You can track your order through the tracking link sent to your email.",
+        },
+        {
+            question: "How do I track my order ?",
+            answer:
+                "You can track your order through the tracking link sent to your email. You can track your order through the tracking link sent to your email. You can track your order through the tracking link sent to your email.",
+        },
+        {
+            question: "Can I purchase items again ?",
+            answer:
+                "Yes, you can repurchase items from your order history. You can track your order through the tracking link sent to your email.",
+        },
+    ];
+
+    return (
+        <div
+            id="section4"
+            className="section4 section flex align-items-center justify-center w-full h-full px-80 box-sizing"
+        >
+            <div
+                className="section4-content bg-grey w-full h-full flex-column align-items-center justify-center border-radius-5 py-20 box-sizing">
+                <p className="sec-text bold">Frequently Asked Questions</p>
+                <p className="small-text w-1-2 center-text my-20">
+                    Company Name Is Now Open, Company Name Is Now Open Company Name Is Now
+                    Open Company Name Is Now Open.Company Name Is Now Open, Company Name
+                    Is Now Open Company Name Is Now Open Company Name Is Now Open.
+                </p>
+                {faqs.map((faq, index) => (
+                    <motion.div
+                        key={index}
+                        className="faq-item  pointer bg-white flex-column justify-space-between align-items-center w-full border-radius-5 my-10 box-sizing py-20"
+                        style={{padding: "20px"}}
+                        onClick={() => toggleOpen(index)}
+                        initial={{height: "auto"}}
+                        animate={{height: openIndex === index ? "120px" : "60px"}}
+                        transition={{}}
+                    >
+                        <div className="flex justify-space-between w-full">
+                            <p className="faq-question bold grey small-text">
+                                {faq.question}
+                            </p>
+                            <motion.img
+                                alt=""
+                                src={arrowDown}
+                                className="logo-"
+                                x
+                                initial={{rotate: "0"}}
+                                animate={{rotate: openIndex === index ? "180deg" : "0"}}
+                            />
+                        </div>
+                        {openIndex === index && (
+                            <motion.p
+                                className="faq-answer flex align-items-start w-full small-text"
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                            >
+                                {faq.answer}
+                            </motion.p>
+                        )}
+                    </motion.div>
+                ))}
+                <div className="action-button bg-orange my-20">
+                    <p className="btn">Ask Our Team</p>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const Section5 = () => {
+    return (
+        <div id="section5"
+             className="section5 section flex-column  align-items-center justify-space-between w-full h-full px-80 box-sizing">
+            <p className="sec-text bold my-20">Relevant Company Products</p>
+            <p className="small-text">
+                Company Name Is Now Open, Company Name Is Company Name Is Now Open
+                Company Name Is Now Open.
+            </p>
+            <div className="section5-content flex justify-space-between align-items-center w-full box-sizing">
+                <div
+                    className="section5-left relative h-full w-1-2 border-radius-5   flex-column justify-space-between align-items ">
+                    <div
+                        className="section5-product flex relative justify-space-between align-items bg-grey py-20 px-20 box-sizing">
+                        <div className="product-img h-full bg-white border-radius-5 px-10 box-sizing py-10">
+                            <img alt="" src={prod2} className=""/>
+                        </div>
+                        <div className="product-texts flex-column">
+                            <p className="bold small-text">Relevant Company Products</p>
+
+                            <p className="small-text my-10">
+                                Company Name Is Now Open, Company Name Is Company Name Is Now
+                                Open Company Name Is Now Open.
+                            </p>
+                        </div>
+                        <div className="product-price flex align-items-center h-full">
+                            <p className="small-text bold bg-orange white px-20 py-10 border-radius-20">
+                                5400,00 DA
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        className="section5-product flex relative justify-space-between align-items bg-grey py-20 px-20 box-sizing">
+                        <div className="product-img h-full bg-white border-radius-5 px-10 box-sizing py-10">
+                            <img alt="" src={prod3} className=""/>
+                        </div>
+                        <div className="product-texts flex-column">
+                            <p className="bold small-text">Relevant Company Products</p>
+                            <p className="small-text my-10">
+                                Company Name Is Now Open, Company Name Is Company Name Is Now
+                                Open Company Name Is Now Open.
+                            </p>
+                        </div>
+                        <div className="product-price flex align-items-center h-full">
+                            <p className="small-text bold bg-orange white px-20 py-10 border-radius-20">
+                                5400,00 DA
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        className="section5-product flex relative justify-space-between align-items bg-grey py-20 px-20 box-sizing">
+                        <div className="product-img h-full bg-white border-radius-5 px-10 box-sizing py-10">
+                            <img alt="" src={prod4} className=""/>
+                        </div>
+                        <div className="product-texts flex-column">
+                            <p className="bold small-text">Relevant Company Products</p>
+                            <p className="small-text my-10">
+                                Company Name Is Now Open, Company Name Is Company Name Is Now
+                                Open Company Name Is Now Open.
+                            </p>
+                        </div>
+                        <div className="product-price flex align-items-center h-full">
+                            <p className="small-text bold bg-orange white px-20 py-10 border-radius-20">
+                                5400,00 DA
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    className="section5-right bg-grey border-radius-5 flex-column justify-space-evenly align-items-center">
+                    <img alt="" src={prod1}/>
+
+                    <div className="action-button bg-orange">
+                        <p className="btn">See Our Products</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const Header = () => {
+    const scrollToSection = (sectionId) => {
+        document.getElementById(sectionId).scrollIntoView({behavior: "smooth"});
+    };
+
+    const [selectedNavIndex, setSelectedNavIndex] = useState(0);
     return (
         <motion.div
             className="header max-z"
@@ -226,10 +412,71 @@ const Header = () => {
             </div>
 
             <div className="navs flex">
-                <p className="nav-item mx-20 orange small-text pointer">Home</p>
-                <p className="nav-item mx-20 grey small-text pointer">Company</p>
-                <p className="nav-item mx-20 grey small-text pointer">About</p>
-                <p className="nav-item mx-20 grey small-text pointer">Contact</p>
+                <motion.p
+                    className="nav-item mx-20 orange small-text pointer"
+                    onClick={() => {
+                        scrollToSection("home");
+                        setSelectedNavIndex(0);
+                    }}
+                    initial={{color: "#ff6600"}}
+                    animate={
+                        selectedNavIndex === 0 ? {color: "#ff6600"} : {color: "#9babb8"}
+                    }
+                >
+                    Home
+                </motion.p>
+                <motion.p
+                    className="nav-item mx-20 grey small-text pointer"
+                    onClick={() => {
+                        scrollToSection("section2");
+                        setSelectedNavIndex(1);
+                    }}
+                    initial={{color: "grey"}}
+                    animate={
+                        selectedNavIndex === 1 ? {color: "#ff6600"} : {color: "#9babb8"}
+                    }
+                >
+                    Company
+                </motion.p>
+                <motion.p
+                    className="nav-item mx-20 grey small-text pointer"
+                    onClick={() => {
+                        scrollToSection("section3");
+                        setSelectedNavIndex(2);
+                    }}
+                    initial={{color: "grey"}}
+                    animate={
+                        selectedNavIndex === 2 ? {color: "#ff6600"} : {color: "#9babb8"}
+                    }
+                >
+                    About
+                </motion.p>
+                <motion.p
+                    className="nav-item mx-20 grey small-text pointer"
+                    onClick={() => {
+                        scrollToSection("section4");
+                        setSelectedNavIndex(3);
+                    }}
+                    initial={{color: "grey"}}
+                    animate={
+                        selectedNavIndex === 3 ? {color: "#ff6600"} : {color: "#9babb8"}
+                    }
+                >
+                    Faq
+                </motion.p>
+                <motion.p
+                    className="nav-item mx-20 grey small-text pointer"
+                    onClick={() => {
+                        scrollToSection("section5");
+                        setSelectedNavIndex(4);
+                    }}
+                    initial={{color: "grey"}}
+                    animate={
+                        selectedNavIndex === 4 ? {color: "#ff6600"} : {color: "#9babb8"}
+                    }
+                >
+                    Contact
+                </motion.p>
             </div>
 
             <div className="action-button bg-orange">
@@ -322,19 +569,23 @@ const Footer = () => {
             </div>
             <div className="mt-8 border-radius-5   flex ">
                 <div className="w-50 flex align-items-center justify-flex-start social-link">
-                    <div className="border-radius-20 bg-grey p-2 flex align-items-center mr-10 pointer ">
+                    <div className="border-radius-20 bg-grey p-2 flex align-items-center mr-10 pointer "
+                         onClick={() => openLinkInNewWindow('#')}>
                         <img src={facebook} alt="facebook-logo" className="mr-10" height="20"/>
                         <span className="small-text bold">Facebook</span>
                     </div>
-                    <div className="border-radius-20 bg-grey p-2 flex align-items-center mr-10 pointer social-link">
+                    <div className="border-radius-20 bg-grey p-2 flex align-items-center mr-10 pointer social-link"
+                         onClick={() => openLinkInNewWindow('#')}>
                         <img src={instagram} alt="facebook-logo" className="mr-10" height="20"/>
                         <span className="small-text bold">Instagram</span>
                     </div>
-                    <div className="border-radius-20 bg-grey p-2 flex align-items-center mr-10 pointer social-link">
+                    <div className="border-radius-20 bg-grey p-2 flex align-items-center mr-10 pointer social-link"
+                         onClick={() => openLinkInNewWindow('#')}>
                         <img src={x} alt="facebook-logo" className="mr-10" height="20"/>
                         <span className="small-text bold">Twitter</span>
                     </div>
-                    <div className="border-radius-20 bg-grey p-2 flex align-items-center mr-10 pointer social-link">
+                    <div className="border-radius-20 bg-grey p-2 flex align-items-center mr-10 pointer social-link"
+                         onClick={() => openLinkInNewWindow('#')}>
                         <img src={youtube} alt="facebook-logo" className="mr-10" height="20"/>
                         <span className="small-text bold">Youtube</span>
                     </div>
@@ -359,4 +610,4 @@ const Footer = () => {
     )
 }
 
-export default App
+export default App;
