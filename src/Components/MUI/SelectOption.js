@@ -21,11 +21,10 @@ const Label = styled.div`
   font-size: 12px;
   padding-left: 30px;
   box-sizing: border-box;
-  border: 1px #9babb8 solid;
   color: grey !important;
   height: 35px;
   margin-top: 5px;
-  width: 190px;
+  width: calc(20vw - 30px);
 `;
 
 const Options = styled.ul`
